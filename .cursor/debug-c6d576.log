@@ -1,0 +1,2 @@
+{"sessionId":"c6d576","runId":"pre-fix","hypothesisId":"H4","location":"src/app/admin/leads/page.tsx:fetchLeads:start","message":"fetchLeads called","data":{"hasWindow":true},"timestamp":1777273446616}
+{"sessionId":"c6d576","runId":"pre-fix","hypothesisId":"H4","location":"src/app/admin/leads/page.tsx:fetchLeads:afterResponse","message":"fetchLeads response received","data":{"ok":false,"status":500,"itemCount":-1},"timestamp":1777273447087}
