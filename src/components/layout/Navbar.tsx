@@ -7,7 +7,6 @@ import { phoneHref } from '@/lib/contact'
 import { HEADER_HEIGHT_CLASS } from '@/lib/logo'
 import { cn } from '@/lib/utils'
 import { ValoracionGratuitaModal } from '@/components/home/ValoracionGratuitaModal'
-import { CalculadoraImpuestosModal } from '@/components/home/CalculadoraImpuestosModal'
 import { SiteLogo } from '@/components/SiteLogo'
 import { SERVICE_ITEMS } from '@/data/services'
 
@@ -158,11 +157,6 @@ export function Navbar() {
               )}
             </nav>
 
-            <CalculadoraImpuestosModal
-              triggerLabel="Calcula tus impuestos"
-              triggerClassName="inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-brand-burgundy px-5 font-display text-xs font-extrabold uppercase tracking-[0.1em] text-brand-burgundy transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-burgundy hover:text-white"
-            />
-
             <ValoracionGratuitaModal
               triggerLabel="Valoración gratuita"
               triggerClassName="inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-brand-burgundy px-5 font-display text-xs font-extrabold uppercase tracking-[0.1em] text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-burgundy-dark hover:shadow-lift"
@@ -210,10 +204,6 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <CalculadoraImpuestosModal
-            triggerLabel="Calcula tus impuestos"
-            triggerClassName="btn-outline mt-4 w-full text-center text-xs"
-          />
           <ValoracionGratuitaModal
             triggerLabel="Valoración gratuita"
             triggerClassName="btn-primary mt-3 w-full text-center text-xs"

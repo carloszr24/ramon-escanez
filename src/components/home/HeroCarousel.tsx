@@ -6,7 +6,7 @@ export function HeroCarousel() {
   return (
     <div className="absolute inset-0 z-0">
       <Image
-        src="/images/ramon-hero.jpg"
+        src="/images/ramon.png"
         alt="Ramón Escánez"
         fill
         priority

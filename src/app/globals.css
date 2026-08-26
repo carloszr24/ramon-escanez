@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --brand-burgundy: #103f91;
-  --brand-burgundy-light: #2b63c6;
-  --brand-burgundy-dark: #0a2d6a;
+  --brand-burgundy: #16a34a;
+  --brand-burgundy-light: #22c55e;
+  --brand-burgundy-dark: #15803d;
   --brand-white: #ffffff;
-  --brand-accent: #4f7fe0;
+  --brand-accent: #22c55e;
   --gold: var(--brand-burgundy);
   --gold-light: var(--brand-burgundy-light);
   --gold-dark: var(--brand-burgundy-dark);

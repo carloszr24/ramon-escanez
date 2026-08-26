@@ -87,12 +87,12 @@ export default function SobreNosotrosPage() {
 
           <div className="max-w-3xl">
             <h1 className="font-display text-[26px] font-extrabold leading-tight text-stone-900 md:text-[40px]">
-              Una inmobiliaria construida sobre la confianza
+              Vender su casa no tiene que ser un caos
             </h1>
             <p className="mt-6 text-base font-light leading-relaxed text-stone-500 md:text-lg">
-              Crecemos contigo, te acompañamos, paso a paso, a ti y a tu familia en el momento más importante
-              de su vida. Sin prisas y sin presiones, atendiendo cada detalle con la honestidad y transparencia
-              que merecen.
+              Sé que decidir vender es una decisión importante, y a veces incómoda. Por eso trabajo con un
+              método claro, sin promesas vacías: actúo desde el primer día con un plan, presento su casa para
+              que el comprador la sienta suya, y usted sabe en todo momento cómo va el proceso.
             </p>
           </div>
 
@@ -113,23 +113,20 @@ export default function SobreNosotrosPage() {
 
             <div className="lg:pt-4">
               <h2 className="font-display text-[20px] font-extrabold leading-snug text-stone-900 md:text-[24px]">
-                Sobre nosotros
+                Quién soy
               </h2>
               <div className="mt-6 space-y-5 text-sm font-light leading-relaxed text-stone-600 md:text-base">
                 <p>
-                  Una tradición familiar que se ha transmitido de generación en generación, cimentada en
-                  valores profundos y en un genuino compromiso con las personas. Desde nuestros inicios,
-                  hemos entendido que el patrimonio inmobiliario no solo representa un activo material, sino
-                  también un espacio donde se construyen sueños, memorias y proyectos de vida.
+                  Soy Ramón Escánez, agente inmobiliario en Granada. No trabajo con carteles ni promesas
+                  vacías: trabajo con un método, el mismo con cada propiedad, desde la primera valoración
+                  hasta la firma en notaría.
                 </p>
                 <p>
-                  Nuestra principal motivación es ayudar. Ya sea facilitando la compra o venta de una
-                  propiedad, asesorando en inversiones o encontrando el hogar ideal. Creemos que el verdadero
-                  valor de nuestro trabajo radica en la capacidad de comprender las inquietudes de nuestros
-                  clientes y acompañarlos en cada paso, con honestidad, dedicación y un trato cercano que
-                  refleje el espíritu de servicio que nos define.
+                  Sé que vender una vivienda no es solo una operación, es una decisión que pesa. Por eso mi
+                  trabajo es ocuparme de las negociaciones y los trámites, para que usted pueda pensar en lo
+                  que viene después.
                 </p>
-                <p>Un legado de confianza, compromiso y pasión por el sector inmobiliario.</p>
+                <p>Usted piensa en su nueva vida. Del resto me ocupo yo.</p>
               </div>
             </div>
           </div>
@@ -141,14 +138,13 @@ export default function SobreNosotrosPage() {
           <div>
             <div className="mb-10 max-w-2xl">
               <p className="mb-3 text-[10px] font-light uppercase tracking-[0.22em] text-brand-burgundy">
-                Cómo trabajamos
+                Cómo trabajo
               </p>
               <h2 className="font-display text-[26px] font-extrabold text-stone-900 md:text-[40px]">
-                Asesoramiento, valoración y marketing
+                El método REM, paso a paso
               </h2>
               <p className="mt-4 text-sm font-light leading-relaxed text-stone-500 md:text-base">
-                Acompañamos a compradores y vendedores con un servicio completo, desde la búsqueda hasta la
-                difusión de su propiedad.
+                Rapidez, Emocionante, Motivante: así acompaño cada venta, desde la valoración hasta la firma.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -178,7 +174,7 @@ export default function SobreNosotrosPage() {
                 Servicios inmobiliarios
               </h2>
               <p className="mt-4 text-sm font-light leading-relaxed text-stone-500">
-                Plusvalía y asesoramiento jurídico con un trato cercano y profesional.
+                Plusvalía y asesoramiento jurídico resueltos, para que usted piense solo en su nueva vida.
               </p>
             </div>
 
@@ -231,7 +227,7 @@ export default function SobreNosotrosPage() {
             <div>
               <h3 className="font-display text-[19px] md:text-[22px] font-extrabold text-stone-900">¿Hablamos?</h3>
               <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-stone-500">
-                Cuéntenos qué necesita y le atenderemos.
+                Si quiere saber cómo aplicaría el método REM a su propiedad, escríbame. Sin compromiso, con calma.
               </p>
             </div>
             <Link
