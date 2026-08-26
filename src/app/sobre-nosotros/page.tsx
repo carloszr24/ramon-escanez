@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { HOME_EXTRA_SERVICES, type ServiceItem } from '@/data/services'
-import { TEAM_QUOTE } from '@/data/team'
 import { HEADER_OFFSET_CLASS } from '@/lib/logo'
 
 function HomeIcon() {
@@ -125,24 +124,7 @@ export default function SobreNosotrosPage() {
 
       <section className="border-t border-stone-200 px-6 py-20 md:px-10 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <blockquote className="border border-stone-200 bg-stone-50 px-8 py-10 md:px-12 md:py-12">
-            <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-center md:text-left">
-              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-stone-200 bg-stone-100 md:h-32 md:w-32">
-                <Image src="/images/ramon-escanez.jpg" alt={TEAM_QUOTE.attribution} fill className="object-cover object-bottom" sizes="128px" />
-              </div>
-              <div>
-                <p className="font-display text-2xl font-light leading-relaxed text-stone-800 md:text-3xl">
-                  “{TEAM_QUOTE.text}”
-                </p>
-                <footer className="mt-6 text-sm font-light text-stone-500">
-                  {TEAM_QUOTE.attribution}
-                  <span className="text-stone-400"> — {TEAM_QUOTE.role}</span>
-                </footer>
-              </div>
-            </div>
-          </blockquote>
-
-          <div className="mt-20 flex flex-col items-start justify-between gap-6 border border-stone-200 bg-white p-8 md:flex-row md:items-center md:p-10">
+          <div className="flex flex-col items-start justify-between gap-6 border border-stone-200 bg-white p-8 md:flex-row md:items-center md:p-10">
             <div>
               <h3 className="font-display text-[19px] md:text-[22px] font-extrabold text-stone-900">¿Hablamos?</h3>
               <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-stone-500">

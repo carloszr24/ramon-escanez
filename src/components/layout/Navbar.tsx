@@ -10,6 +10,7 @@ import { ValoracionGratuitaModal } from '@/components/home/ValoracionGratuitaMod
 import { SERVICE_ITEMS } from '@/data/services'
 
 const links = [
+  { href: '/', label: 'Inicio' },
   { href: '/propiedades', label: 'Propiedades' },
   { href: '/sobre-nosotros', label: 'Servicios' },
   { href: '/contacto', label: 'Contacto' },
@@ -73,13 +74,12 @@ export function Navbar() {
       <div className="mx-auto max-w-[1440px] px-5 sm:px-7 lg:px-10 xl:px-12">
         <div
           className={cn(
-            'flex w-full items-center justify-end',
+            'flex w-full items-center justify-between',
             HEADER_HEIGHT_CLASS
           )}
         >
-          <div className="ml-8 hidden shrink-0 items-center gap-6 self-center md:flex lg:ml-10 lg:gap-7">
-            <nav className="flex items-center gap-6 lg:gap-7">
-              {links.map((link) =>
+          <nav className="hidden shrink-0 items-center gap-6 self-center md:flex lg:gap-7">
+            {links.map((link) =>
                 link.href === '/sobre-nosotros' ? (
                   <div
                     key={link.href}
@@ -167,43 +167,44 @@ export function Navbar() {
                   </Link>
                 )
               )}
-            </nav>
+          </nav>
 
+          <div className="flex shrink-0 items-center gap-4">
             <ValoracionGratuitaModal
               triggerLabel="Valoración gratuita"
-              triggerClassName="inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-brand-burgundy px-5 font-display text-xs font-extrabold uppercase tracking-[0.1em] text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-burgundy-dark hover:shadow-lift"
+              triggerClassName="hidden md:inline-flex h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-brand-burgundy px-5 font-display text-xs font-extrabold uppercase tracking-[0.1em] text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-burgundy-dark hover:shadow-lift"
             />
-          </div>
 
-          <button
-            className="ml-auto p-2 transition-colors md:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-          >
-            <div className="w-5 space-y-1.5">
-              <span
-                className={cn(
-                  'block h-px transition-all duration-300',
-                  transparent ? 'bg-white' : 'bg-stone-900',
-                  open && 'translate-y-2 rotate-45'
-                )}
-              />
-              <span
-                className={cn(
-                  'block h-px transition-all duration-300',
-                  transparent ? 'bg-white' : 'bg-stone-900',
-                  open && 'opacity-0'
-                )}
-              />
-              <span
-                className={cn(
-                  'block h-px transition-all duration-300',
-                  transparent ? 'bg-white' : 'bg-stone-900',
-                  open && '-translate-y-2 -rotate-45'
-                )}
-              />
-            </div>
-          </button>
+            <button
+              className="p-2 transition-colors md:hidden"
+              onClick={() => setOpen(!open)}
+              aria-label="Menu"
+            >
+              <div className="w-5 space-y-1.5">
+                <span
+                  className={cn(
+                    'block h-px transition-all duration-300',
+                    transparent ? 'bg-white' : 'bg-stone-900',
+                    open && 'translate-y-2 rotate-45'
+                  )}
+                />
+                <span
+                  className={cn(
+                    'block h-px transition-all duration-300',
+                    transparent ? 'bg-white' : 'bg-stone-900',
+                    open && 'opacity-0'
+                  )}
+                />
+                <span
+                  className={cn(
+                    'block h-px transition-all duration-300',
+                    transparent ? 'bg-white' : 'bg-stone-900',
+                    open && '-translate-y-2 -rotate-45'
+                  )}
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
