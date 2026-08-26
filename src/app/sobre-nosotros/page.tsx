@@ -55,22 +55,17 @@ export default function SobreNosotrosPage() {
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
-              <div className="absolute left-1/2 top-[52%] h-[128%] w-[128%] -translate-x-1/2 -translate-y-1/2">
-                <Image
-                  src="/images/ramon-granada.png"
-                  alt="Ramón Escánez en Granada"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
+              <Image
+                src="/images/ramon-granada.png"
+                alt="Ramón Escánez en Granada"
+                fill
+                className="object-cover object-[68%_20%]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
 
             <div className="lg:pt-4">
-              <h2 className="font-display text-[20px] font-extrabold leading-snug text-stone-900 md:text-[24px]">
-                Quién soy
-              </h2>
-              <p className="mt-5 font-display text-lg font-extrabold leading-snug text-stone-900 md:text-2xl">
+              <p className="font-display text-lg font-extrabold leading-snug text-stone-900 md:text-2xl">
                 Con 14 años <span className="font-extrabold">aprendí</span> que una{' '}
                 <span className="text-brand-burgundy">casa</span> no es cuatro paredes.
               </p>
