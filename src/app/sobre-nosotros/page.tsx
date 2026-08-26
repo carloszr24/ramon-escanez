@@ -94,14 +94,6 @@ export default function SobreNosotrosPage() {
               de su vida. Sin prisas y sin presiones, atendiendo cada detalle con la honestidad y transparencia
               que merecen.
             </p>
-            <blockquote className="mt-8 border-l-2 border-brand-burgundy/30 pl-5">
-              <p className="font-display text-base font-light italic leading-relaxed text-stone-600 md:text-lg">
-                “Excelente experiencia en la compra de mi vivienda gracias a Andrés. Estuvo 100% pendiente y
-                atento en todo momento, solucionando y mediando rápidamente cualquier problema con los trámites
-                y el papeleo. Su implicación marca la diferencia. Totalmente recomendado.”
-              </p>
-              <footer className="mt-3 text-sm font-light text-stone-400">dieguiloslances <span className="text-stone-300">— Reseña de Google</span></footer>
-            </blockquote>
           </div>
 
           <div className="my-14 h-px bg-stone-200" />
@@ -110,8 +102,8 @@ export default function SobreNosotrosPage() {
             <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
               <div className="absolute left-1/2 top-[52%] h-[128%] w-[128%] -translate-x-1/2 -translate-y-1/2">
                 <Image
-                  src="/images/tarifa-sobre-nosotros.png"
-                  alt="Vista de Tarifa"
+                  src="/images/granada-sobre-nosotros.png"
+                  alt="Vista de Granada"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -206,7 +198,7 @@ export default function SobreNosotrosPage() {
                 Zona de cobertura
               </h2>
               <p className="mt-4 text-sm font-light leading-relaxed text-stone-500">
-                Operamos en las provincias de Granada, Córdoba y Almería.
+                Operamos en la provincia de Granada.
               </p>
             </div>
             <div className="overflow-hidden rounded-sm border border-stone-200">
@@ -221,7 +213,7 @@ export default function SobreNosotrosPage() {
           <blockquote className="border border-stone-200 bg-stone-50 px-8 py-10 md:px-12 md:py-12">
             <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-center md:text-left">
               <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-stone-200 bg-stone-100 md:h-32 md:w-32">
-                <Image src="/images/andres-falcone.jpg" alt={TEAM_QUOTE.attribution} fill className="object-cover object-bottom" sizes="128px" />
+                <Image src="/images/ramon-escanez.jpg" alt={TEAM_QUOTE.attribution} fill className="object-cover object-bottom" sizes="128px" />
               </div>
               <div>
                 <p className="font-display text-2xl font-light leading-relaxed text-stone-800 md:text-3xl">

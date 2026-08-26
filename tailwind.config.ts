@@ -12,6 +12,7 @@ const config: Config = {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         display: ['var(--font-heading)', 'var(--font-body)', 'system-ui', 'sans-serif'],
         brand: ['var(--font-display)', 'Georgia', 'serif'],
+        signature: ['var(--font-signature)', 'cursive'],
       },
       colors: {
         stone: {
@@ -24,23 +25,23 @@ const config: Config = {
           200: '#e2d8ca',
         },
         brand: {
-          // Falcone corporate blue (aliases keep existing class names working)
-          teal: '#103f91',
-          'teal-light': '#2b63c6',
-          'teal-dark': '#0a2d6a',
-          burgundy: '#103f91',
-          'burgundy-light': '#2b63c6',
-          'burgundy-dark': '#0a2d6a',
-          red: '#103f91',
-          'red-light': '#2b63c6',
-          'red-dark': '#0a2d6a',
+          // Corporate navy (aliases keep existing class names working)
+          teal: '#101e38',
+          'teal-light': '#2c3f66',
+          'teal-dark': '#080e1a',
+          burgundy: '#101e38',
+          'burgundy-light': '#2c3f66',
+          'burgundy-dark': '#080e1a',
+          red: '#101e38',
+          'red-light': '#2c3f66',
+          'red-dark': '#080e1a',
           white: '#FFFFFF',
-          accent: '#4f7fe0',
+          accent: '#3d5a8c',
         },
         gold: {
-          DEFAULT: '#103f91',
-          light: '#2b63c6',
-          dark: '#0a2d6a',
+          DEFAULT: '#101e38',
+          light: '#2c3f66',
+          dark: '#080e1a',
         },
       },
       boxShadow: {

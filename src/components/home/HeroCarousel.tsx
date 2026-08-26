@@ -6,8 +6,8 @@ export function HeroCarousel() {
   return (
     <div className="absolute inset-0 z-0">
       <Image
-        src="/images/tarifa.png"
-        alt="Vista de Tarifa"
+        src="/images/granada.png"
+        alt="Vista de Granada"
         fill
         priority
         quality={80}

@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { mkdirSync, existsSync, unlinkSync, writeFileSync } from 'fs'
+import { join } from 'path'
 import { getAdminTokenFromRequest, verifyAdminSessionToken } from '@/lib/admin-session'
 import { optimizePropertyImage } from '@/lib/optimize-image'
-import { getSupabaseAdmin, PROPERTY_IMAGES_BUCKET } from '@/lib/supabase-admin'
 
 // Nota: Vercel limita el body de las funciones serverless a ~4.5MB, por eso este
 // límite se queda por debajo de eso. Las imágenes ya llegan comprimidas desde el
 // navegador (ver src/lib/client-image.ts), así que en la práctica no debería activarse.
 const MAX_BYTES = 4 * 1024 * 1024
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp'])
+
+const PROPERTIES_DIR = join(process.cwd(), 'public', 'images', 'properties')
+const PUBLIC_PREFIX = '/images/properties'
 
 function unauthorized() {
   return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
@@ -18,10 +22,11 @@ function badRequest(message: string) {
 }
 
 function pathFromPublicUrl(url: string): string | null {
-  const marker = `/storage/v1/object/public/${PROPERTY_IMAGES_BUCKET}/`
-  const idx = url.indexOf(marker)
+  const idx = url.indexOf(PUBLIC_PREFIX)
   if (idx === -1) return null
-  return decodeURIComponent(url.slice(idx + marker.length))
+  const relative = url.slice(idx + PUBLIC_PREFIX.length).replace(/^\/+/, '')
+  if (relative.includes('..')) return null
+  return relative
 }
 
 export async function POST(request: NextRequest) {
@@ -41,17 +46,13 @@ export async function POST(request: NextRequest) {
   const originalBuffer = Buffer.from(await file.arrayBuffer())
   const optimized = await optimizePropertyImage(originalBuffer)
 
-  const path = `${propertyId}/${Date.now()}.${optimized.ext}`
-  const { error: uploadError } = await getSupabaseAdmin()
-    .storage.from(PROPERTY_IMAGES_BUCKET)
-    .upload(path, optimized.data, { contentType: optimized.contentType, upsert: false })
+  const relativePath = `${propertyId}/${Date.now()}.${optimized.ext}`
+  const targetDir = join(PROPERTIES_DIR, propertyId)
+  if (!existsSync(targetDir)) mkdirSync(targetDir, { recursive: true })
+  writeFileSync(join(PROPERTIES_DIR, relativePath), optimized.data)
 
-  if (uploadError) {
-    return NextResponse.json({ error: `Error al subir imagen: ${uploadError.message}` }, { status: 500 })
-  }
-
-  const { data } = getSupabaseAdmin().storage.from(PROPERTY_IMAGES_BUCKET).getPublicUrl(path)
-  return NextResponse.json({ url: data.publicUrl, path: data.publicUrl })
+  const url = `${PUBLIC_PREFIX}/${relativePath}`
+  return NextResponse.json({ url, path: url })
 }
 
 export async function DELETE(request: NextRequest) {
@@ -70,13 +71,11 @@ export async function DELETE(request: NextRequest) {
     return badRequest('Falta url')
   }
 
-  const path = pathFromPublicUrl(body.url)
-  if (!path) return badRequest('URL no reconocida')
+  const relativePath = pathFromPublicUrl(body.url)
+  if (!relativePath) return badRequest('URL no reconocida')
 
-  const { error } = await getSupabaseAdmin().storage.from(PROPERTY_IMAGES_BUCKET).remove([path])
-  if (error) {
-    return NextResponse.json({ error: `Error al borrar imagen: ${error.message}` }, { status: 500 })
-  }
+  const fullPath = join(PROPERTIES_DIR, relativePath)
+  if (existsSync(fullPath)) unlinkSync(fullPath)
 
   return NextResponse.json({ ok: true })
 }

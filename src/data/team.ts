@@ -10,17 +10,17 @@ export type TeamMember = {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: 'andres-falcone',
-    name: 'Andrés Falcone',
-    role: 'Director',
+    id: 'ramon-escanez',
+    name: 'Ramón Escánez',
+    role: 'Agente inmobiliario',
     tenure: null,
-    initials: 'AF',
+    initials: 'RE',
     photo: null,
   },
 ]
 
 export const TEAM_QUOTE = {
-  text: 'Conozco muy bien el Campo de Gibraltar y su entorno. Primero escucho atentamente, informo con claridad y acompaño cada paso de la compraventa.',
-  attribution: 'Andrés Falcone',
-  role: 'Director',
+  text: 'Hay un sentimiento de pérdida cuando se vende una propiedad. Estoy para minimizarte eso que te preocupa: yo asumo todas las negociaciones y trámites.',
+  attribution: 'Ramón Escánez',
+  role: 'Agente inmobiliario',
 } as const

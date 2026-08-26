@@ -269,7 +269,7 @@ export default function AdminLeadsPage() {
         <div>
           <h1 className="font-display text-3xl font-light text-stone-900">Leads de la web</h1>
           <p className="text-stone-500 text-sm mt-1">
-            Contactos y valoraciones recibidos desde la web de Falcone Propiedades
+            Contactos y valoraciones recibidos desde la web de Ramón Escánez
           </p>
         </div>
         <button type="button" className="btn-outline text-xs px-4 py-2.5 self-start" onClick={fetchLeads}>

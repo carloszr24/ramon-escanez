@@ -1,9 +1,15 @@
 import 'server-only'
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
+import { join } from 'path'
 import type { Property } from '@/types'
-import { getSupabaseAdmin } from '@/lib/supabase-admin'
 import { normalizeExtraIds, syncLegacyExtraFields } from '@/lib/property-extras'
 
-const TABLE = 'properties'
+const DATA_DIR = join(process.cwd(), 'data')
+const PROPERTIES_FILE = join(DATA_DIR, 'properties.json')
+
+function ensureDataDir() {
+  if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR, { recursive: true })
+}
 
 type PropertyRow = {
   id: string
@@ -42,6 +48,17 @@ type PropertyRow = {
   sort_order: number
   created_at: string
   updated_at: string
+}
+
+function readRows(): PropertyRow[] {
+  ensureDataDir()
+  if (!existsSync(PROPERTIES_FILE)) return []
+  return JSON.parse(readFileSync(PROPERTIES_FILE, 'utf8')) as PropertyRow[]
+}
+
+function writeRows(rows: PropertyRow[]) {
+  ensureDataDir()
+  writeFileSync(PROPERTIES_FILE, `${JSON.stringify(rows, null, 2)}\n`, 'utf8')
 }
 
 function rowToProperty(row: PropertyRow): Property {
@@ -94,10 +111,7 @@ function parseImagesToArray(images: string): string[] {
   }
 }
 
-function propertyToRow(property: Property): Omit<PropertyRow, 'created_at' | 'updated_at'> & {
-  created_at: string
-  updated_at: string
-} {
+function propertyToRow(property: Property): PropertyRow {
   return {
     id: property.id,
     title: property.title,
@@ -139,78 +153,73 @@ function propertyToRow(property: Property): Omit<PropertyRow, 'created_at' | 'up
 }
 
 export async function listProperties(): Promise<Property[]> {
-  const { data, error } = await getSupabaseAdmin()
-    .from(TABLE)
-    .select('*')
-    .order('sort_order', { ascending: true })
-  if (error) throw new Error(`Error al leer propiedades: ${error.message}`)
-  return (data ?? []).map((row) => rowToProperty(row as PropertyRow))
+  return readRows()
+    .slice()
+    .sort((a, b) => a.sort_order - b.sort_order)
+    .map(rowToProperty)
 }
 
 export async function getPropertyRowById(id: string): Promise<Property | null> {
-  const { data, error } = await getSupabaseAdmin().from(TABLE).select('*').eq('id', id).maybeSingle()
-  if (error) throw new Error(`Error al leer propiedad: ${error.message}`)
-  return data ? rowToProperty(data as PropertyRow) : null
+  const row = readRows().find((r) => r.id === id)
+  return row ? rowToProperty(row) : null
 }
 
 export async function propertyIdExists(id: string): Promise<boolean> {
-  const { count, error } = await getSupabaseAdmin()
-    .from(TABLE)
-    .select('id', { count: 'exact', head: true })
-    .eq('id', id)
-  if (error) throw new Error(`Error al comprobar propiedad: ${error.message}`)
-  return (count ?? 0) > 0
+  return readRows().some((r) => r.id === id)
 }
 
 export async function countProperties(): Promise<number> {
-  const { count, error } = await getSupabaseAdmin().from(TABLE).select('id', { count: 'exact', head: true })
-  if (error) throw new Error(`Error al contar propiedades: ${error.message}`)
-  return count ?? 0
+  return readRows().length
 }
 
 export async function insertProperty(property: Property): Promise<Property> {
-  const { data, error } = await getSupabaseAdmin().from(TABLE).insert(propertyToRow(property)).select('*').single()
-  if (error) throw new Error(`Error al crear propiedad: ${error.message}`)
-  return rowToProperty(data as PropertyRow)
+  const rows = readRows()
+  const row = propertyToRow(property)
+  rows.push(row)
+  writeRows(rows)
+  return rowToProperty(row)
 }
 
 export async function updatePropertyRow(id: string, property: Property): Promise<Property> {
-  const { data, error } = await getSupabaseAdmin()
-    .from(TABLE)
-    .update(propertyToRow(property))
-    .eq('id', id)
-    .select('*')
-    .single()
-  if (error) throw new Error(`Error al actualizar propiedad: ${error.message}`)
-  return rowToProperty(data as PropertyRow)
+  const rows = readRows()
+  const index = rows.findIndex((r) => r.id === id)
+  if (index === -1) throw new Error('Error al actualizar propiedad: no encontrada')
+  const row = propertyToRow(property)
+  rows[index] = row
+  writeRows(rows)
+  return rowToProperty(row)
 }
 
 export async function deletePropertyRow(id: string): Promise<void> {
-  const { error } = await getSupabaseAdmin().from(TABLE).delete().eq('id', id)
-  if (error) throw new Error(`Error al borrar propiedad: ${error.message}`)
+  const rows = readRows().filter((r) => r.id !== id)
+  writeRows(rows)
 }
 
 export async function setPropertyArchived(id: string, archived: boolean): Promise<Property | null> {
-  const { data, error } = await getSupabaseAdmin()
-    .from(TABLE)
-    .update({ archived, featured: archived ? false : undefined, updated_at: new Date().toISOString() })
-    .eq('id', id)
-    .select('*')
-    .single()
-  if (error) throw new Error(`Error al actualizar propiedad: ${error.message}`)
-  return data ? rowToProperty(data as PropertyRow) : null
+  const rows = readRows()
+  const index = rows.findIndex((r) => r.id === id)
+  if (index === -1) return null
+  rows[index] = {
+    ...rows[index],
+    archived,
+    featured: archived ? false : rows[index].featured,
+    updated_at: new Date().toISOString(),
+  }
+  writeRows(rows)
+  return rowToProperty(rows[index])
 }
 
 export async function reorderPropertyRows(ids: string[]): Promise<void> {
-  const admin = getSupabaseAdmin()
+  const rows = readRows()
   const now = new Date().toISOString()
-  const results = await Promise.all(
-    ids.map((id, index) =>
-      admin.from(TABLE).update({ sort_order: index, updated_at: now }).eq('id', id)
-    )
-  )
-  const failed = results.find((r) => r.error)
-  if (failed?.error) throw new Error(`Error al reordenar propiedades: ${failed.error.message}`)
+  ids.forEach((id, index) => {
+    const row = rows.find((r) => r.id === id)
+    if (row) {
+      row.sort_order = index
+      row.updated_at = now
+    }
+  })
+  writeRows(rows)
 }
 
 export function slugifyPropertyId(title: string): string {

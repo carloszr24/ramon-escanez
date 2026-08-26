@@ -1,8 +1,8 @@
-# Falcone Propiedades — Web
+# Ramón Escánez — Web
 
 Next.js + TypeScript + Tailwind. **Datos locales** en `data/properties.json` y `data/leads.json` (sin base de datos externa).
 
-Inmobiliaria en Tarifa (Cádiz).
+Agente inmobiliario en Granada.
 
 ---
 

@@ -22,7 +22,7 @@ export function Footer() {
               {AGENT.tagline}
               <br />
               <br />
-              Oficina en Tarifa, Cádiz.
+              Oficina en Granada.
             </p>
           </div>
           <div>

@@ -7,6 +7,7 @@ import { HeroCarousel } from '@/components/home/HeroCarousel'
 import { ScrollHint } from '@/components/home/ScrollHint'
 import { HeroActions } from '@/components/home/HeroActions'
 import { ReviewsCarousel } from '@/components/home/ReviewsCarousel'
+import { REVIEWS } from '@/data/reviews'
 
 export const dynamic = 'force-dynamic'
 
@@ -51,11 +52,17 @@ export default async function HomePage() {
 
         <div className="relative z-10 flex flex-1 w-full items-center justify-center px-4 min-[400px]:px-6 translate-y-4 md:translate-y-10">
           <div className="text-center max-w-4xl mx-auto w-full">
+            <p
+              className="font-signature text-white text-[clamp(34px,10vw,84px)] leading-none mb-3 animate-fade-up"
+              style={{ opacity: 0, animationFillMode: 'forwards' }}
+            >
+              Ramón Escánez
+            </p>
             <span
               className="inline-block mb-5 rounded-full border border-white/40 bg-brand-burgundy-dark/35 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white/90 animate-fade-up"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              Algeciras · Tarifa · Campo de Gibraltar
+              Granada
             </span>
             <h1
               className="font-display font-extrabold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] text-balance text-[clamp(28px,6vw,46px)] leading-[1.05] tracking-tight mb-6 animate-fade-up"
@@ -86,7 +93,7 @@ export default async function HomePage() {
               Todo lo que necesita para operar con confianza
             </h2>
             <p className="mt-4 text-sm text-stone-200/80 max-w-2xl mx-auto leading-relaxed font-light">
-              Nuestra oficina se encuentra en Tarifa, Cádiz.
+              Nuestra oficina se encuentra en Granada.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -119,7 +126,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <ReviewsCarousel />
+      {REVIEWS.length > 0 && <ReviewsCarousel />}
 
       <section className="py-24 px-6 md:px-10 max-w-7xl mx-auto">
         {featured.length > 0 ? (

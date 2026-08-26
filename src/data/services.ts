@@ -41,7 +41,7 @@ export const HOME_EXTRA_SERVICES: ServiceItem[] = [
 export const SERVICE_ITEMS: ServiceItem[] = [
   {
     title: 'Compra y venta',
-    desc: 'Acompañamiento integral en operaciones de compraventa en Tarifa y la costa de Cádiz.',
+    desc: 'Acompañamiento integral en operaciones de compraventa en Granada y su provincia.',
   },
   ...HOME_EXTRA_SERVICES,
   {

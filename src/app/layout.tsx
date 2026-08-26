@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Fraunces, Manrope, Plus_Jakarta_Sans } from 'next/font/google'
+import { Fraunces, Manrope, Mrs_Saint_Delafield, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
@@ -22,12 +22,18 @@ const display = Fraunces({
   weight: ['400', '500', '600'],
 })
 
+const signature = Mrs_Saint_Delafield({
+  subsets: ['latin'],
+  variable: '--font-signature',
+  weight: '400',
+})
+
 export const metadata: Metadata = {
-  title: 'Falcone Propiedades | Inmobiliaria en Tarifa',
+  title: 'Ramón Escánez | Agente inmobiliario en Granada',
   description:
-    'Compra y venta de viviendas en Tarifa y Cádiz. Falcone Propiedades: trato cercano, asesoramiento claro y propiedades cerca del mar.',
+    'Compra y venta de viviendas en Granada. Ramón Escánez: trato cercano, asesoramiento claro y acompañamiento en cada paso.',
   keywords:
-    'falcone propiedades, inmobiliaria tarifa, comprar piso tarifa, venta vivienda cadiz, playa de los lances, agencia inmobiliaria tarifa',
+    'ramón escánez, agente inmobiliario granada, comprar piso granada, venta vivienda granada, inmobiliaria granada',
 }
 
 export default function RootLayout({
@@ -36,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${sans.variable} ${heading.variable} ${display.variable}`}>
+    <html lang="es" className={`${sans.variable} ${heading.variable} ${display.variable} ${signature.variable}`}>
       <body className="bg-sand-50 text-ink antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>

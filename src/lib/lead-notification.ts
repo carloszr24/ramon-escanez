@@ -20,7 +20,7 @@ export type LeadNotificationPayload = {
 }
 
 const BRAND_BURGUNDY = '#103f91'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://falconepropiedades.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://ramonescanez.com'
 
 function escapeHtml(value: string): string {
   return value
@@ -248,7 +248,7 @@ function buildEmailContent(record: LeadNotificationPayload) {
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;margin:0 auto">
       <tr>
         <td style="background:${BRAND_BURGUNDY};border-radius:12px 12px 0 0;padding:20px 24px">
-          <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.82)">Falcone Propiedades</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.82)">Ramón Escánez</div>
           <div style="margin-top:8px;font-size:22px;font-weight:700;line-height:1.25;color:#ffffff">${escapeHtml(headline)}</div>
         </td>
       </tr>
@@ -268,7 +268,7 @@ function buildEmailContent(record: LeadNotificationPayload) {
       </tr>
       <tr>
         <td style="background:#fafaf9;border:1px solid #e7e5e4;border-top:none;border-radius:0 0 12px 12px;padding:16px 24px;text-align:center">
-          <a href="${SITE_URL}" style="font-size:13px;color:#78716c;text-decoration:none">falconepropiedades.com</a>
+          <a href="${SITE_URL}" style="font-size:13px;color:#78716c;text-decoration:none">ramonescanez.com</a>
         </td>
       </tr>
     </table>
@@ -304,7 +304,7 @@ export async function sendLeadNotificationEmail(
   }
 
   const from =
-    process.env.RESEND_FROM_EMAIL?.trim() || 'Falcone Propiedades <onboarding@resend.dev>'
+    process.env.RESEND_FROM_EMAIL?.trim() || 'Ramón Escánez <onboarding@resend.dev>'
 
   const { text, html, subject } = buildEmailContent(record)
   const body: Record<string, unknown> = {

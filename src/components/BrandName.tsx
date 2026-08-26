@@ -7,7 +7,7 @@ type Props = {
 export function BrandName({ className }: Props) {
   return (
     <span className={cn('font-display font-light tracking-[0.02em]', className)}>
-      Falcone
+      Ramón Escánez
     </span>
   )
 }

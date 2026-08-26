@@ -1,5 +1,5 @@
 {
-  "name": "falcone-propiedades",
+  "name": "ramon-escanez",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
     "test:docx": "node scripts/test_temas.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.112.3",
     "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
     "next": "^14.2.0",

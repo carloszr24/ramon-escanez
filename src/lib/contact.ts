@@ -1,26 +1,26 @@
-export const CONTACT_EMAIL = 'correo@falconepropiedades.com'
+export const CONTACT_EMAIL = 'correo@ramonescanez.com'
 
 export const AGENT = {
-  name: 'Falcone Propiedades',
-  title: 'Agencia inmobiliaria',
+  name: 'Ramón Escánez',
+  title: 'Agente inmobiliario',
   tagline:
-    'Inmobiliaria en Tarifa. Te acompañamos en la compra y venta de tu vivienda con trato cercano y profesional.',
+    'Agente inmobiliario en Granada. Te acompaño en la compra y venta de tu vivienda con trato cercano y profesional.',
 } as const
 
 export const LEGAL = {
-  ownerName: 'Falcone Propiedades',
+  ownerName: 'Ramón Escánez',
   legalForm: 'autónomo',
   taxId: '',
-  address: 'Urb. El Acebuche 8, 11380 Tarifa, Cádiz',
+  address: 'Paseo del Violón, 10, 18006 Granada',
 } as const
 
 export const OFFICES = {
   primary: {
     label: 'Oficina',
-    line1: 'Urb. El Acebuche 8',
-    line2: '11380 Tarifa, Cádiz',
-    full: 'Urb. El Acebuche 8, 11380 Tarifa, Cádiz',
-    mapsQuery: 'Urb+El+Acebuche+8,+11380+Tarifa,+Cadiz',
+    line1: 'Paseo del Violón, 10',
+    line2: '18006 Granada',
+    full: 'Paseo del Violón, 10, 18006 Granada',
+    mapsQuery: 'Paseo+del+Violon+10,+18006+Granada',
   },
 } as const
 
@@ -30,9 +30,9 @@ export const CONTACT = {
   address: OFFICES.primary,
   offices: OFFICES,
   phone: {
-    display: '627 13 63 16',
-    e164: '+34627136316',
-    wa: '34627136316',
+    display: '643 82 03 04',
+    e164: '+34643820304',
+    wa: '34643820304',
     label: 'Teléfono',
   },
   email: contactEmail,

@@ -583,7 +583,7 @@ export function CalculadoraImpuestosModal({
             )}
 
             <p className="lead-modal-disclaimer">
-              Herramienta orientativa de Falcone Propiedades. No constituye asesoramiento fiscal ni liquidación oficial. Verifica siempre con tu ayuntamiento, notaría o asesor fiscal.
+              Herramienta orientativa de Ramón Escánez. No constituye asesoramiento fiscal ni liquidación oficial. Verifica siempre con tu ayuntamiento, notaría o asesor fiscal.
             </p>
           </div>
         </div>,
@@ -623,7 +623,7 @@ function ContactSection<T extends ContactFields>({
           <input type="checkbox" checked={form.consent} style={{ marginTop: '0.2rem' }}
             onChange={(e) => setForm((p) => ({ ...p, consent: e.target.checked }))} />
           <span style={{ textTransform: 'none', letterSpacing: 'normal', fontSize: '0.72rem' }}>
-            Acepto que Falcone Propiedades contacte conmigo para enviarme el resultado y orientarme. Tratamos tus datos conforme al RGPD y no los cedemos a terceros.
+            Acepto que Ramón Escánez contacte conmigo para enviarme el resultado y orientarme. Tratamos tus datos conforme al RGPD y no los cedemos a terceros.
           </span>
         </label>
       </div>
