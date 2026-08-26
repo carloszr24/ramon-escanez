@@ -44,7 +44,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className={cn('relative h-[78vh] max-h-[42rem] min-h-[30rem] flex flex-col items-center justify-center overflow-hidden pb-8 md:pb-10', HEADER_OFFSET_CLASS)}>
+      <section className={cn('relative h-svh min-h-[36rem] flex flex-col items-center justify-center overflow-hidden pb-8 md:pb-10', HEADER_OFFSET_CLASS)}>
         <div className="absolute inset-0">
           <HeroCarousel />
         </div>
