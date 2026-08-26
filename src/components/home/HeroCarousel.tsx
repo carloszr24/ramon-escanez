@@ -12,7 +12,7 @@ export function HeroCarousel() {
         priority
         quality={80}
         sizes="100vw"
-        className="object-cover object-[70%_center] brightness-[0.88] saturate-[0.95]"
+        className="object-cover object-[68%_35%] brightness-[0.88] saturate-[0.95]"
       />
       <div
         className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-950/40 to-stone-950/10"
