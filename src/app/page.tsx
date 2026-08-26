@@ -47,17 +47,10 @@ export default async function HomePage() {
       <section className={cn('relative h-svh min-h-[32rem] flex flex-col items-center justify-center overflow-hidden pb-8 md:pb-10', HEADER_OFFSET_CLASS)}>
         <div className="absolute inset-0">
           <HeroCarousel />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-brand-burgundy-dark/30 to-stone-950/55" />
         </div>
 
-        <div className="relative z-10 flex flex-1 w-full items-center justify-center px-4 min-[400px]:px-6 translate-y-4 md:translate-y-10">
-          <div className="text-center max-w-4xl mx-auto w-full">
-            <p
-              className="font-signature text-white text-[clamp(34px,10vw,84px)] leading-none mb-3 animate-fade-up"
-              style={{ opacity: 0, animationFillMode: 'forwards' }}
-            >
-              Ramón Escánez
-            </p>
+        <div className="relative z-10 flex flex-1 w-full items-center px-4 min-[400px]:px-6 md:px-12 lg:px-20 translate-y-4 md:translate-y-10">
+          <div className="text-left max-w-xl w-full">
             <span
               className="inline-block mb-5 rounded-full border border-white/40 bg-brand-burgundy-dark/35 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white/90 animate-fade-up"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
@@ -68,16 +61,13 @@ export default async function HomePage() {
               className="font-display font-extrabold text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] text-balance text-[clamp(28px,6vw,46px)] leading-[1.05] tracking-tight mb-6 animate-fade-up"
               style={{ opacity: 0, animationFillMode: 'forwards' }}
             >
-              Tu patrimonio es importante,
-              <span className="hidden md:inline"> </span>
-              <br className="md:hidden" aria-hidden="true" />
-              la manera de <span className="text-sand-100">venderlo</span> también
+              Su casa puede venderse sin estrés y a su <span className="text-brand-burgundy-light">precio justo</span>
             </h1>
             <p
-              className="text-stone-200/95 text-[16px] font-normal max-w-[min(100%,24rem)] sm:max-w-xl mx-auto mb-9 leading-relaxed text-pretty animate-fade-up"
+              className="text-stone-200/95 text-[16px] font-normal max-w-md mb-9 leading-relaxed text-pretty animate-fade-up"
               style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}
             >
-              Valoramos su vivienda con honestidad, y le acompañamos con una estrategia de venta clara, de principio a fin.
+              No es una promesa vacía. Es el resultado de trabajar con un método claro desde el primer día.
             </p>
             <HeroActions />
           </div>
@@ -90,28 +80,28 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 text-center">
             <h2 className="font-display text-[26px] text-white md:text-[40px] font-extrabold leading-snug">
-              Todo lo que necesita para operar con confianza
+              Así funciona el método <span className="text-stone-900">REM</span>
             </h2>
             <p className="mt-4 text-sm text-stone-200/80 max-w-2xl mx-auto leading-relaxed font-light">
-              Nuestra oficina se encuentra en Granada.
+              Rapidez, Emocionante, Motivante.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 icon: HomeIcon,
-                title: 'Compra y venta',
-                desc: 'Acompañamiento completo durante toda la operación, de principio a fin.',
+                title: 'Rapidez',
+                desc: 'Actuamos desde el primer día con un plan, no con un cartel.',
               },
               {
                 icon: ScaleIcon,
-                title: 'Asesoramiento jurídico',
-                desc: 'Orientación en documentación, trámites y formalización con la máxima diligencia.',
+                title: 'Emocionante',
+                desc: 'Presentamos su casa para que el comprador la sienta suya.',
               },
               {
                 icon: ClipboardIcon,
-                title: 'Gestión integral',
-                desc: 'Coordinación del proceso inmobiliario hasta la firma en notaría.',
+                title: 'Motivante',
+                desc: 'El proceso avanza con orden, y usted sabe en todo momento cómo va.',
               },
             ].map((item) => (
               <div key={item.title} className="rounded-lg p-7 border border-white/15 bg-white/5 hover:bg-white/10 transition-colors duration-300">

@@ -12,7 +12,6 @@ const config: Config = {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         display: ['var(--font-heading)', 'var(--font-body)', 'system-ui', 'sans-serif'],
         brand: ['var(--font-display)', 'Georgia', 'serif'],
-        signature: ['var(--font-signature)', 'cursive'],
       },
       colors: {
         stone: {
@@ -25,23 +24,24 @@ const config: Config = {
           200: '#e2d8ca',
         },
         brand: {
-          // Corporate navy (aliases keep existing class names working)
-          teal: '#101e38',
-          'teal-light': '#2c3f66',
-          'teal-dark': '#080e1a',
-          burgundy: '#101e38',
-          'burgundy-light': '#2c3f66',
-          'burgundy-dark': '#080e1a',
-          red: '#101e38',
-          'red-light': '#2c3f66',
-          'red-dark': '#080e1a',
+          // Corporate green — método REM (aliases keep existing class names working)
+          teal: '#16a34a',
+          'teal-light': '#22c55e',
+          'teal-dark': '#15803d',
+          burgundy: '#16a34a',
+          'burgundy-light': '#22c55e',
+          'burgundy-dark': '#15803d',
+          red: '#16a34a',
+          'red-light': '#22c55e',
+          'red-dark': '#15803d',
           white: '#FFFFFF',
-          accent: '#3d5a8c',
+          accent: '#22c55e',
+          amber: '#d97706',
         },
         gold: {
-          DEFAULT: '#101e38',
-          light: '#2c3f66',
-          dark: '#080e1a',
+          DEFAULT: '#16a34a',
+          light: '#22c55e',
+          dark: '#15803d',
         },
       },
       boxShadow: {

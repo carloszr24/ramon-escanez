@@ -4,7 +4,7 @@ import { AGENT } from '@/lib/contact'
 type Props = {
   className?: string
   variant?: 'header' | 'footer'
-  /** 'dark' renders navy text (for light backgrounds), 'light' renders white text (for dark backgrounds). */
+  /** 'dark' renders ink text (for light backgrounds), 'light' renders white text (for dark backgrounds). */
   tone?: 'dark' | 'light'
   priority?: boolean
 }
@@ -15,9 +15,9 @@ export function SiteLogo({ className, variant = 'header', tone = 'dark' }: Props
   return (
     <span
       className={cn(
-        'font-signature leading-none',
-        isFooter ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl',
-        tone === 'light' ? 'text-white' : 'text-brand-burgundy',
+        'font-display font-extrabold uppercase tracking-[0.04em] leading-none',
+        isFooter ? 'text-xl md:text-2xl' : 'text-base md:text-lg',
+        tone === 'light' ? 'text-white' : 'text-stone-900',
         className
       )}
     >
