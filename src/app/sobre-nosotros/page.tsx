@@ -1,7 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { HOME_EXTRA_SERVICES, type ServiceItem } from '@/data/services'
 import { TEAM_QUOTE } from '@/data/team'
 import { HEADER_OFFSET_CLASS } from '@/lib/logo'
+
+function HomeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="h-5 w-5" aria-hidden="true">
+      <path d="M3 11.25 12 4l9 7.25" />
+      <path d="M5.25 10.5V20h13.5v-9.5" />
+      <path d="M9.75 20v-5.5h4.5V20" />
+    </svg>
+  )
+}
+
+function ServiceCard({ service }: { service: ServiceItem }) {
+  return (
+    <div className="group border border-stone-200 bg-white p-8 transition-colors duration-300 hover:border-brand-burgundy/30">
+      <span className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-sm border border-stone-200 text-stone-600 transition-colors group-hover:border-brand-burgundy/30 group-hover:text-brand-burgundy">
+        <HomeIcon />
+      </span>
+      <h3 className="mb-3 font-display text-[16px] md:text-[18px] font-extrabold text-stone-900 transition-colors group-hover:text-brand-burgundy">
+        {service.title}
+      </h3>
+      <p className="text-sm font-light leading-relaxed text-stone-500">{service.desc}</p>
+    </div>
+  )
+}
 
 export default function SobreNosotrosPage() {
   return (
@@ -65,7 +90,26 @@ export default function SobreNosotrosPage() {
       </section>
 
       <section className="bg-stone-50 px-6 py-20 md:px-10 md:py-24">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl space-y-20">
+          <div>
+            <div className="mb-10 max-w-2xl">
+              <p className="mb-3 text-[10px] font-light uppercase tracking-[0.22em] text-brand-burgundy">
+                Cómo trabajo
+              </p>
+              <h2 className="font-display text-[26px] font-extrabold text-stone-900 md:text-[40px]">
+                El método REM, paso a paso
+              </h2>
+              <p className="mt-4 text-sm font-light leading-relaxed text-stone-500 md:text-base">
+                Rapidez, Emocionante, Motivante: así acompaño cada venta, desde la valoración hasta la firma.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {HOME_EXTRA_SERVICES.map((service) => (
+                <ServiceCard key={service.title} service={service} />
+              ))}
+            </div>
+          </div>
+
           <div className="border-l-2 border-brand-burgundy/30 bg-white p-8 md:p-10">
             <p className="mb-3 text-[10px] font-light uppercase tracking-[0.22em] text-brand-burgundy">
               Compromiso personal

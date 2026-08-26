@@ -7,7 +7,6 @@ import { phoneHref } from '@/lib/contact'
 import { HEADER_HEIGHT_CLASS } from '@/lib/logo'
 import { cn } from '@/lib/utils'
 import { ValoracionGratuitaModal } from '@/components/home/ValoracionGratuitaModal'
-import { SiteLogo } from '@/components/SiteLogo'
 import { SERVICE_ITEMS } from '@/data/services'
 
 const links = [
@@ -16,14 +15,14 @@ const links = [
   { href: '/contacto', label: 'Contacto' },
 ]
 
-const navLinkClass =
-  'inline-flex items-center leading-none text-[0.68rem] font-medium uppercase tracking-[0.12em] text-slate-600 transition-colors duration-200'
-
 export function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const closeTimer = useRef<NodeJS.Timeout | null>(null)
+  const isHome = pathname === '/'
+  const transparent = isHome && !scrolled && !open
 
   useEffect(() => {
     return () => {
@@ -31,7 +30,20 @@ export function Navbar() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!isHome) return
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isHome])
+
   if (pathname.startsWith('/admin')) return null
+
+  const navLinkClass = cn(
+    'inline-flex items-center leading-none text-[0.68rem] font-medium uppercase tracking-[0.12em] transition-colors duration-200',
+    transparent ? 'text-white/90 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+  )
 
   const cancelClose = () => {
     if (!closeTimer.current) return
@@ -50,18 +62,21 @@ export function Navbar() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-stone-200/80 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.04)] backdrop-blur-sm">
+    <header
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+        transparent
+          ? 'border-b border-transparent bg-transparent'
+          : 'border-b border-stone-200/80 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.04)] backdrop-blur-sm'
+      )}
+    >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-7 lg:px-10 xl:px-12">
         <div
           className={cn(
-            'flex w-full items-center justify-between',
+            'flex w-full items-center justify-end',
             HEADER_HEIGHT_CLASS
           )}
         >
-          <Link href="/" className="relative z-10 inline-flex shrink-0 items-center py-1">
-            <SiteLogo priority />
-          </Link>
-
           <div className="ml-8 hidden shrink-0 items-center gap-6 self-center md:flex lg:ml-10 lg:gap-7">
             <nav className="flex items-center gap-6 lg:gap-7">
               {links.map((link) =>
@@ -77,9 +92,8 @@ export function Navbar() {
                       className={cn(
                         navLinkClass,
                         'gap-1.5 py-1',
-                        pathname === link.href || servicesOpen
-                          ? 'text-slate-900'
-                          : 'hover:text-slate-900'
+                        (pathname === link.href || servicesOpen) &&
+                          (transparent ? 'text-white' : 'text-slate-900')
                       )}
                     >
                       {link.label}
@@ -146,9 +160,7 @@ export function Navbar() {
                     href={link.href}
                     className={cn(
                       navLinkClass,
-                      pathname === link.href
-                        ? 'text-slate-900'
-                        : 'hover:text-slate-900'
+                      pathname === link.href && (transparent ? 'text-white' : 'text-slate-900')
                     )}
                   >
                     {link.label}
@@ -164,26 +176,29 @@ export function Navbar() {
           </div>
 
           <button
-            className="ml-auto p-2 text-stone-600 transition-colors md:hidden"
+            className="ml-auto p-2 transition-colors md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
             <div className="w-5 space-y-1.5">
               <span
                 className={cn(
-                  'block h-px bg-stone-900 transition-all duration-300',
+                  'block h-px transition-all duration-300',
+                  transparent ? 'bg-white' : 'bg-stone-900',
                   open && 'translate-y-2 rotate-45'
                 )}
               />
               <span
                 className={cn(
-                  'block h-px bg-stone-900 transition-all duration-300',
+                  'block h-px transition-all duration-300',
+                  transparent ? 'bg-white' : 'bg-stone-900',
                   open && 'opacity-0'
                 )}
               />
               <span
                 className={cn(
-                  'block h-px bg-stone-900 transition-all duration-300',
+                  'block h-px transition-all duration-300',
+                  transparent ? 'bg-white' : 'bg-stone-900',
                   open && '-translate-y-2 -rotate-45'
                 )}
               />
