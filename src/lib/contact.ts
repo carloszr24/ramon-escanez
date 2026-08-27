@@ -1,4 +1,4 @@
-export const CONTACT_EMAIL = 'correo@ramonescanez.com'
+export const CONTACT_EMAIL = 'asesorenergeticoexclusivo@gmail.com'
 
 export const AGENT = {
   name: 'Ramón Escánez',
