@@ -118,7 +118,7 @@
     "energy_value": null,
     "emissions_rating": "E",
     "emissions_value": null,
-    "featured": false,
+    "featured": true,
     "archived": false,
     "sort_order": 2,
     "created_at": "2026-08-26T12:00:00.000Z",
