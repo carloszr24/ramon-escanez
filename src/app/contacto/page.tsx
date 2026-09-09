@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {
   CONTACT,
   OFFICES,
+  SOCIAL,
   emailHref,
   hasEmail,
   mapsHref,
@@ -36,6 +37,24 @@ function MailIcon() {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5" aria-hidden="true">
       <path d="M4 6h16v12H4z" />
       <path d="m4 7 8 6 8-6" />
+    </svg>
+  )
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-5 w-5" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-5 w-5" aria-hidden="true">
+      <path d="M14 8.5h2V5h-2a4 4 0 0 0-4 4v2H8v3.5h2V21h3.5v-6.5H16l.5-3.5h-3V9c0-.28.22-.5.5-.5Z" />
     </svg>
   )
 }
@@ -242,6 +261,36 @@ export default function ContactoPage() {
                       {OFFICES.primary.line1}
                       <br />
                       {OFFICES.primary.line2}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <span className="shrink-0 text-stone-500"><InstagramIcon /></span>
+                  <div>
+                    <p className="text-xs text-stone-400 tracking-wide mb-1">Instagram</p>
+                    <a
+                      href={SOCIAL.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-stone-700 text-sm font-light hover:text-stone-900 transition-colors"
+                    >
+                      @ramonescanez.inmobiliaria
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <span className="shrink-0 text-stone-500"><FacebookIcon /></span>
+                  <div>
+                    <p className="text-xs text-stone-400 tracking-wide mb-1">Facebook</p>
+                    <a
+                      href={SOCIAL.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-stone-700 text-sm font-light hover:text-stone-900 transition-colors"
+                    >
+                      Ramón Escánez — Asesor inmobiliario
                     </a>
                   </div>
                 </div>

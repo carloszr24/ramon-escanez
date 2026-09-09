@@ -44,3 +44,8 @@ export const hasEmail = CONTACT.email.length > 0
 export const emailHref = hasEmail ? `mailto:${CONTACT.email}` : ''
 export const whatsappHref = `https://wa.me/${CONTACT.phone.wa}`
 export const whatsappDisplay = `+34 ${CONTACT.phone.display}`
+
+export const SOCIAL = {
+  instagram: 'https://www.instagram.com/ramonescanez.inmobiliaria/',
+  facebook: 'https://www.facebook.com/people/Ram%C3%B3n-Escanez-Asesor-inmobiliario/61593015651718/',
+} as const
