@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css'
 import { cn } from '@/lib/utils'
 import { formatPrice } from '@/lib/utils'
 import {
-  TARIFA_CENTER,
+  GRANADA_CENTER,
   DEFAULT_MAP_ZOOM,
   MAP_TILE_ATTRIBUTION,
   MAP_TILE_URL,
@@ -72,14 +72,14 @@ export default function PropertyMap({ points = [], className, draggable = null, 
       scrollWheelZoom: false,
       zoomControl: true,
       attributionControl: true,
-    }).setView(TARIFA_CENTER, DEFAULT_MAP_ZOOM)
+    }).setView(GRANADA_CENTER, DEFAULT_MAP_ZOOM)
 
     map.zoomControl.setPosition('topright')
 
     L.tileLayer(MAP_TILE_URL, {
       attribution: MAP_TILE_ATTRIBUTION,
       maxZoom: 19,
-      subdomains: 'abcd',
+      subdomains: 'abc',
     }).addTo(map)
 
     mapRef.current = map
@@ -119,7 +119,7 @@ export default function PropertyMap({ points = [], className, draggable = null, 
     }
 
     if (points.length === 0) {
-      map.setView(TARIFA_CENTER, DEFAULT_MAP_ZOOM, { animate: false })
+      map.setView(GRANADA_CENTER, DEFAULT_MAP_ZOOM, { animate: false })
       return
     }
 
